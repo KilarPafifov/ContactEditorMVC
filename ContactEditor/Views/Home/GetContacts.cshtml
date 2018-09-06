@@ -1,0 +1,19 @@
+﻿
+@model IEnumerable<ContactEditor.Models.Contact>
+
+@{
+    ViewBag.Title = "GetContacts";
+}
+
+<h2>GetContacts</h2>
+
+<ul>
+    @foreach (ContactEditor.Models.Contact c in Model)
+    {
+        <li>@c.ContactId</li>
+        <li>@c.Person</li>
+        <li>@c.Phone</li>
+        
+    }
+</ul>
+
