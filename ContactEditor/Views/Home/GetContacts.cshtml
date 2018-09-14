@@ -1,5 +1,4 @@
-﻿
-@model IEnumerable<ContactEditor.Models.Contact>
+﻿@model IEnumerable<ContactEditor.Models.Contact>
 
 @{
     ViewBag.Title = "GetContacts";
@@ -7,13 +6,13 @@
 
 <h2>GetContacts</h2>
 
-<ul>
-    @foreach (ContactEditor.Models.Contact c in Model)
+<a href="Index">Добавить контакт</a>
+
+    @foreach (ContactEditor.Models.Contact c in ViewBag.Contacts)
     {
-        <li>@c.ContactId</li>
-        <li>@c.Person</li>
-        <li>@c.Phone</li>
-        
+            <p>@c.Person</p>
+            <p>@c.Phone</p>
+            <p><img src="@c.PathToImage"></p>
     }
-</ul>
+
 

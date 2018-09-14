@@ -7,6 +7,7 @@ using ContactEditor.Models;
 using System.Data.Entity;
 using System.Drawing;
 using System.IO;
+using ContactEditor.Util;
 
 namespace ContactEditor.Controllers
 {
@@ -21,9 +22,21 @@ namespace ContactEditor.Controllers
         public ActionResult GetContacts()
         {
             var contacts = context.Contacts.ToList();
-            return View(contacts);
+            ViewBag.Contacts = contacts.ToList();
+            return View();
         }
+        
+        [HttpPost]
+        public ActionResult AddImage(Image image)
+        {
+            return View();
+        }
+        public ActionResult GetImage()
+        {
+            string path = "../Content/Images/jp.jpg";
+            return new ImageResult(path);
 
+        }
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";

@@ -1,10 +1,18 @@
 ﻿@model ContactEditor.Models.Contact
+@{ 
 
-@{
-    ViewBag.Title = "Home Page";
+                ViewBag.Title = "Index";
 }
 
-@foreach (Contact c in Model)
-{
-    <p>@c</p>
-}
+<h1>Введите данные нового контакта</h1>
+
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        <p>ФИО:     @Html.TextBoxFor(x => x.Person)</p>
+        <p>Телефон: @Html.TextBoxFor(x => x.Phone)</p>
+        
+        
+    }
+</body>

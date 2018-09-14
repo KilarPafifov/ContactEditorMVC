@@ -12,7 +12,7 @@ namespace ContactEditor.Models
         public int ContactId { get; set; }
         [MaxLength(30)]
         public string Person { get; set; }
-        public int Phone { get; set; }
+        public string Phone { get; set; }
         public string PathToImage { get; set; }
 
     }

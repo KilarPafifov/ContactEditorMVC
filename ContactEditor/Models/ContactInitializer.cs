@@ -14,8 +14,8 @@ namespace ContactEditor.Models
             {
                 ContactId = 1,
                 Person = "ivan",
-                Phone = 555555,
-                PathToImage = @"..Content\Images\jp.jpg"
+                Phone = "555555",
+                PathToImage = "/Content/Images/jp.jpg"
             }
             );
 
@@ -23,8 +23,8 @@ namespace ContactEditor.Models
             {
                 ContactId = 2,
                 Person = "petr",
-                Phone = 888888,
-                PathToImage = @"..Content\Images\jp.jpg"
+                Phone = "888888",
+                PathToImage = "/Content/Images/goroda-pejzazh-46355.jpg"
             }
             );
         }
