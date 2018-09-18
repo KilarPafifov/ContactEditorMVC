@@ -7,12 +7,18 @@
 <h1>Введите данные нового контакта</h1>
 
 <body>
-    @using (Html.BeginForm())
-    {
-        @Html.ValidationSummary()
-        <p>ФИО:     @Html.TextBoxFor(x => x.Person)</p>
-        <p>Телефон: @Html.TextBoxFor(x => x.Phone)</p>
-        
-        
-    }
+
+        <h3>Выберите файл для загрузки</h3>
+        @using (Html.BeginForm("AddImage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+            @Html.ValidationSummary()
+            <p>ФИО:     @Html.TextBoxFor(x => x.Person)</p>
+            <p>Телефон: @Html.TextBoxFor(x => x.Phone)</p>
+            <input type="file" name="upload" /><br>
+            <input type="submit" value="Загрузить" />
+            
+        }
+
+    
 </body>

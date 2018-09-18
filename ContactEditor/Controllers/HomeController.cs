@@ -14,6 +14,7 @@ namespace ContactEditor.Controllers
     public class HomeController : Controller
     {
         ContactContext context = new ContactContext();
+        [HttpGet]
         public ActionResult Index()
         {
             return View();
@@ -27,10 +28,22 @@ namespace ContactEditor.Controllers
         }
         
         [HttpPost]
-        public ActionResult AddImage(Image image)
+        public ActionResult AddImage(Contact contact, HttpPostedFileBase upload)
         {
-            return View();
+            if (upload != null)
+            {
+                // получаем имя файла
+                string fileName = System.IO.Path.GetFileName(upload.FileName);
+                // сохраняем файл в папку Files в проекте
+                upload.SaveAs(Server.MapPath("~/Content/Images/" + fileName));
+                contact.ContactId = 1 + (context.Contacts.Count());
+                contact.PathToImage = fileName;
+                //context.Contacts.Add(contact);
+                //context.SaveChanges();
+            }
+            return RedirectToAction("Index");
         }
+        
         public ActionResult GetImage()
         {
             string path = "../Content/Images/jp.jpg";
