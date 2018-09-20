@@ -33,13 +33,13 @@ namespace ContactEditor.Controllers
             if (upload != null)
             {
                 // получаем имя файла
-                string fileName = System.IO.Path.GetFileName(upload.FileName);
+                string fileName = "/Content/Images/" + System.IO.Path.GetFileName(upload.FileName);
                 // сохраняем файл в папку Files в проекте
-                upload.SaveAs(Server.MapPath("~/Content/Images/" + fileName));
+                upload.SaveAs(Server.MapPath(fileName));
                 contact.ContactId = 1 + (context.Contacts.Count());
                 contact.PathToImage = fileName;
-                //context.Contacts.Add(contact);
-                //context.SaveChanges();
+                context.Contacts.Add(contact);
+                context.SaveChanges();
             }
             return RedirectToAction("Index");
         }

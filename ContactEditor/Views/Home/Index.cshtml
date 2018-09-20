@@ -13,10 +13,11 @@
         {
 
             @Html.ValidationSummary()
-            <p>ФИО:     @Html.TextBoxFor(x => x.Person)</p>
+            <p>ФИО:   @Html.TextBoxFor(x => x.Person)</p>
             <p>Телефон: @Html.TextBoxFor(x => x.Phone)</p>
             <input type="file" name="upload" /><br>
             <input type="submit" value="Загрузить" />
+            <input type="hidden" value="contact"/>
             
         }
 
