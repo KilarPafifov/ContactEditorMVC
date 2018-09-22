@@ -8,18 +8,20 @@
 
 <body>
 
-        <h3>Выберите файл для загрузки</h3>
-        @using (Html.BeginForm("AddImage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
+    @using (Html.BeginForm("AddImage", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
 
-            @Html.ValidationSummary()
-            <p>ФИО:   @Html.TextBoxFor(x => x.Person)</p>
-            <p>Телефон: @Html.TextBoxFor(x => x.Phone)</p>
-            <input type="file" name="upload" /><br>
-            <input type="submit" value="Загрузить" />
-            <input type="hidden" value="contact"/>
-            
-        }
+        @Html.ValidationSummary()
+        <p>ФИО:   @Html.TextBoxFor(x => x.Person)</p>
+        <p>Телефон: @Html.TextBoxFor(x => x.Phone)</p>
+        <p>Выберите файл для загрузки</p>
+        <input type="file" name="upload" /><br>
+        <input type="hidden" value="contact" />
+        <input type="submit" value="Загрузить" />
+        <a href="../Home/GetContacts">Обратно к списку</a>
 
-    
+    }
+
 </body>
+
+

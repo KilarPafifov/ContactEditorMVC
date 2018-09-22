@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "DeleteContact";
+}
+
+<h1>Введите ID контакта, который Вы хотите удалить</h1>
+
+@using (Html.BeginForm())
+{
+
+
+    <input type="text" value="@ViewBag.Id" name="Id" />
+    <input type="submit" value="Удалить" />
+}

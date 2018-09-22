@@ -23,8 +23,8 @@ namespace ContactEditor.Controllers
         public ActionResult GetContacts()
         {
             var contacts = context.Contacts.ToList();
-            ViewBag.Contacts = contacts.ToList();
-            return View();
+            
+            return View(contacts);
         }
         
         [HttpPost]
@@ -32,9 +32,7 @@ namespace ContactEditor.Controllers
         {
             if (upload != null)
             {
-                // получаем имя файла
                 string fileName = "/Content/Images/" + System.IO.Path.GetFileName(upload.FileName);
-                // сохраняем файл в папку Files в проекте
                 upload.SaveAs(Server.MapPath(fileName));
                 contact.ContactId = 1 + (context.Contacts.Count());
                 contact.PathToImage = fileName;
@@ -57,10 +55,29 @@ namespace ContactEditor.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        
+        public ActionResult DeleteContact(string id)
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Id = Convert.ToInt32(id);
+           // int Id = Convert.ToInt32(id);
+            if (ViewBag.Id > context.Contacts.Count() || ViewBag.Id <= 0)
+            {
+                return View();
+            }
 
+            foreach (Contact c in context.Contacts)
+            {
+                if (ViewBag.Id == c.ContactId)
+                {
+                    context.Contacts.Remove(c);
+                    context.SaveChanges();
+                }
+            }
+
+            return View();
+        }
+        public ActionResult Contact(string id)
+        {
             return View();
         }
     }

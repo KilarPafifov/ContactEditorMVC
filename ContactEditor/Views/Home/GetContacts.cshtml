@@ -6,9 +6,10 @@
 
 <h2>GetContacts</h2>
 
-<a href="Index">Добавить контакт</a>
+<a href="Index">Добавить контакт</a><br />
+<a href="DeleteContact">Удалить контакт</a>
 
-    @foreach (ContactEditor.Models.Contact c in ViewBag.Contacts)
+    @foreach (ContactEditor.Models.Contact c in Model)
     {
             <p>@c.Person</p>
             <p>@c.Phone</p>
