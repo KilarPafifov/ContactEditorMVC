@@ -23,7 +23,6 @@ namespace ContactEditor.Controllers
         public ActionResult GetContacts()
         {
             var contacts = context.Contacts.ToList();
-            
             return View(contacts);
         }
         
@@ -55,11 +54,39 @@ namespace ContactEditor.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult EditContact(int id)
+        {
+            ViewBag.ContactId = id;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditContact(Contact contact, HttpPostedFileBase upload)
+        {
+            foreach(Contact c in context.Contacts)
+            {
+                if (upload != null)
+                {
+                    if (c.ContactId == contact.ContactId)
+                    {
+                        string fileName = "/Content/Images/" + System.IO.Path.GetFileName(upload.FileName);
+                        upload.SaveAs(Server.MapPath(fileName));
+                        c.Person = contact.Person;
+                        c.Phone = contact.Phone;
+                        c.PathToImage = fileName;
+                    }
+                }
+            }
+
+            context.SaveChanges();
+            return View();
+        }
         
         public ActionResult DeleteContact(string id)
         {
             ViewBag.Id = Convert.ToInt32(id);
-           // int Id = Convert.ToInt32(id);
+           
             if (ViewBag.Id > context.Contacts.Count() || ViewBag.Id <= 0)
             {
                 return View();
@@ -70,10 +97,10 @@ namespace ContactEditor.Controllers
                 if (ViewBag.Id == c.ContactId)
                 {
                     context.Contacts.Remove(c);
-                    context.SaveChanges();
                 }
             }
 
+            context.SaveChanges();
             return View();
         }
         public ActionResult Contact(string id)

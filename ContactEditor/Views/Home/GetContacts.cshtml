@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "GetContacts";
+
 }
 
 <h2>GetContacts</h2>
@@ -11,9 +12,10 @@
 
     @foreach (ContactEditor.Models.Contact c in Model)
     {
+            <p>@c.ContactId</p>
             <p>@c.Person</p>
             <p>@c.Phone</p>
-            <p><img src="@c.PathToImage"></p>
+            <p><img src="@c.PathToImage"><a href="/Home/EditContact/@c.ContactId">Редактировать контакт</a></p>
     }
 
 

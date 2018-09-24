@@ -1,0 +1,27 @@
+﻿@model ContactEditor.Models.Contact
+@{
+    ViewBag.Title = "EditContact";
+    
+}
+
+<h2>Редактирование контакта</h2>
+
+<body>
+
+    @using (Html.BeginForm("EditContact", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+
+        @Html.ValidationSummary()
+        <input type="hidden" value="@ViewBag.ContactId" name="ContactId"/>
+        <p>ФИО:   @Html.TextBoxFor(x => x.Person)</p>
+        <p>Телефон: @Html.TextBoxFor(x => x.Phone)</p>
+        <p>Выберите файл для загрузки</p>
+        <input type="file" name="upload" /><br>
+        <input type="hidden" value="contact" />
+        <input type="submit" value="Редактировать" />
+        <a href="/Home/GetContacts">Обратно к списку</a>
+
+    }
+
+</body>
+
