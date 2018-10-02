@@ -14,6 +14,7 @@ namespace ContactEditor.Models
         public string Person { get; set; }
         public string Phone { get; set; }
         public string PathToImage { get; set; }
+        
 
     }
 }

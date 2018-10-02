@@ -13,21 +13,28 @@ namespace ContactEditor.Controllers
 {
     public class HomeController : Controller
     {
+       
         ContactContext context = new ContactContext();
         [HttpGet]
         public ActionResult Index()
         {
             return View();
         }
-
+        
         public ActionResult GetContacts()
         {
             var contacts = context.Contacts.ToList();
             return View(contacts);
         }
-        
+
+        public ActionResult GetSortedContacts()
+        {
+            var contacts = context.Contacts.OrderBy(u => u.Person).ToList();
+            return View(contacts);
+        }
+
         [HttpPost]
-        public ActionResult AddImage(Contact contact, HttpPostedFileBase upload)
+        public ActionResult AddContact(Contact contact, HttpPostedFileBase upload)
         {
             if (upload != null)
             {

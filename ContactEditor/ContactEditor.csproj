@@ -200,6 +200,7 @@
     <Content Include="Views\Home\GetContacts.cshtml" />
     <Content Include="Views\Home\DeleteContact.cshtml" />
     <Content Include="Views\Home\EditContact.cshtml" />
+    <Content Include="Views\Home\GetSortedContacts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

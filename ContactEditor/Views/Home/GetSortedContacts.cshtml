@@ -1,15 +1,13 @@
 ﻿@model IEnumerable<ContactEditor.Models.Contact>
 
 @{
-    ViewBag.Title = "GetContacts";
-
+    ViewBag.Title = "GetSortedContacts";
 }
 
-<h2>Список контактов</h2>
+<h2>Список контактов отсортированных по имени</h2>
 
 <a href="Index">Добавить контакт</a><br />
-<a href="DeleteContact">Удалить контакт</a><br />
-<a href="/Home/GetSortedContacts">Отсортировать контакты по имени</a>
+<a href="DeleteContact">Удалить контакт</a>
 @foreach (ContactEditor.Models.Contact c in Model)
 {
     <p>@c.ContactId</p>
@@ -17,6 +15,4 @@
     <p>@c.Phone</p>
     <p><img src="@c.PathToImage"><a href="/Home/EditContact/@c.ContactId">Редактировать контакт</a></p>
 }
-
-
 
